@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Foundation | Welcome</title>
+
+        <!-- Foundation CSS -->
+        <link rel="stylesheet" href="css/foundation.css" />
+        <script src="js/vendor/modernizr.js"></script>
+    </head>
+    <body>
+        <!-- Main content -->
+        <div class="row" id="inputUsers">
+            <h1>Input the names of all guests below</h1>
+            <div class="columns small-12">
+                <a id="add" href="#" onclick="addUser();" class="success button expand">Add another guest</a>
+                <a id="delete" href="#" onclick="deleteUser();" class="alert button expand">Delete a guest</a>
+                <a id="finish" href="#" onclick="moveToInputMenu();" class="large button expand">Finish inputting guests, continue to input menu</a>
+            </div>
+        </div>
+        
+
+        <!-- Foundation JS -->
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+            $(document).ready(function() {addUser()});
+        </script>
+
+        <!-- Custom CSS and JS -->
+        <link rel="stylesheet" href="css/styles.css" />
+        <script src="js/script.js"></script>
+    </body>
+</html>
