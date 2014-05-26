@@ -11,26 +11,76 @@
     </head>
     <body>
         <!-- Main content -->
-        <div class="row" id="inputUsers">
+        <div class="row singleStep" id="inputUsers">
             <h1>Input the names of all guests below</h1>
             <div class="columns small-12">
-                <a id="add" href="#" onclick="addUser();" class="success button expand">Add another guest</a>
-                <a id="delete" href="#" onclick="deleteUser();" class="alert button expand">Delete a guest</a>
-                <a id="finish" href="#" onclick="moveToInputMenu();" class="large button expand">Finish inputting guests, continue to input menu</a>
+                <a id="addUser" href="#" onclick="addUser();" class="success button expand">Add another guest</a>
+                <a id="deleteUser" href="#" onclick="deleteUser();" class="alert button expand">Delete a guest</a>
+                <a id="finishUser" href="#" onclick="saveUsersAndContinue();" class="large button expand">Next (input bill)</a>
+            </div>
+        </div>
+
+        <div class="row singleStep" id="inputBill">
+            <h1>Input the item name (optional), price, and name of the person who bought each item. <strong>Only input subtotals here, no tax or tip</strong></h1>
+            <div class="columns small-12">
+                <form data-abide id="inputBillForm">
+                    <a id="addItem" href="#" onclick="addItem();" class="success button expand">Add another item</a>
+                    <a id="deleteItem" href="#" onclick="deleteItem();" class="alert button expand">Delete an item</a>
+                    <div class="columns small-6">
+                        <a id="finishUser" href="#" onclick="showOneScreen('inputUsers');" class="large button expand">Previous (input guests)</a>
+                    </div>
+                    <div class="columns small-6">
+                        <a id="finishUser" href="#" onclick="showOneScreen('inputTipTax');" class="large button expand">Next (input tax/tip)</a>
+                    </div>
+                </form>
             </div>
         </div>
         
+        <div class="row singleStep" id="inputTipTax">
+            <h1>Extra options:</h1>
+            <div class="columns small-12">
+                <form data-abide id="inputTipTaxForm">
+                    <div class="tip-field">
+                        <label>Tip %<input id="tip" type="text" placeholder="Please input a value for tip" required pattern="[0-9]{1,3}(\.[0-9]+|)%?"/></label>
+                        <small class="error">Tip is improperly formatted. Example of valid format: 15%, 15.2%, 15, etc</small>
+                    </div>
+                    <div class="tax-field">
+                        <label>Tax<input id="tax" type="text" placeholder="Please enter the dollar amount of tax on your bill (no dollar sign)" required pattern="\$?[0-9]+(\.[0-9]+|)" /></label>
+                        <small class="error">Tax is improperly formatted. Example of valid format: $2, $2.00, 2.03, etc</small>
+                    </div>
+                    <div class="columns small-6">
+                        <a id="finishUser" href="#" onclick="showOneScreen('inputBill');" class="large button expand">Previous (input bill)</a>
+                    </div>
+                    <div class="columns small-6">
+                        <button type="submit" class="large button expand" id="finishTipTax" onclick="saveTipTaxAndContinue();">Next (finish)</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row singleStep" id="final">
+            <div class="columns small-12">
+
+                <span id="final-placeholder"></span>
+            </div>
+        </div>
 
         <!-- Foundation JS -->
         <script src="js/vendor/jquery.js"></script>
         <script src="js/foundation.min.js"></script>
-        <script>
-            $(document).foundation();
-            $(document).ready(function() {addUser()});
-        </script>
 
         <!-- Custom CSS and JS -->
         <link rel="stylesheet" href="css/styles.css" />
         <script src="js/script.js"></script>
+
+        <script>
+            $(document).foundation();
+            $(document).ready(function() {
+                addUser();
+                showOneScreen("inputUsers");
+            });
+        </script>
+
+
     </body>
 </html>
