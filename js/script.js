@@ -63,7 +63,7 @@ function calculate() {
 
     // Add the subtotal of each item to each user's value, and also calculates a bill subtotal
     $(".item-field").each(function() {
-        var thisItem = parseFloat($(this).find(".itemPrice").val()replace(/[^0-9.]/g,""));
+        var thisItem = parseFloat($(this).find(".itemPrice").val().replace(/[^0-9.]/g,""));
 
         subtotal += thisItem;
         window.USERNAMES[$(this).find(".itemBuyer").val()] += thisItem;
