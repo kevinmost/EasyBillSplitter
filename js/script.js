@@ -42,7 +42,7 @@ function saveTipTaxAndContinue() {
     showOneScreen("final");
 
     for (user in window.USERNAMES) {
-        $("#final").append('<h2>' + user + '</h2><div class="row"><div class="columns small-6">Total:</div><div class="columns small-6">' + window.USERNAMES[user].toFixed(2) + '</div></div><div class="row"><div class="columns small-6">Tip:</div><div class="columns small-6">' + (window.USERNAMES[user]*window.tipMultiplier).toFixed(2) + '</div></div><div class="row"><div class="columns small-6">Total w/tip</div><div class="columns small-6">' + (window.USERNAMES[user]*(1+window.tipMultiplier)).toFixed(2) + '</div></div>');
+        $('<h2>' + user + '</h2><div class="row"><div class="columns small-6">Total:</div><div class="columns small-6">' + window.USERNAMES[user].toFixed(2) + '</div></div><div class="row"><div class="columns small-6">Tip:</div><div class="columns small-6">' + (window.USERNAMES[user]*window.tipMultiplier).toFixed(2) + '</div></div><div class="row"><div class="columns small-6">Total w/tip</div><div class="columns small-6">' + (window.USERNAMES[user]*(1+window.tipMultiplier)).toFixed(2) + '</div></div>').insertBefore($("#reset"));
     };
 }
 
